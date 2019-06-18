@@ -1,4 +1,4 @@
-<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
 <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 <!--
     aframe-extras loaders is needed in order to add glTF models (And a whole lot of other model formats) into your AR Project.
@@ -20,13 +20,17 @@
       https://akashkuttappa.github.io/ar/markers/hiro.jpg
     -->
     <a-marker preset='hiro'>
-      <a-entity
+      <!-- <a-entity
       id="drone"
       position="0 0 0"
       scale="1 1 1"
       gltf-model-next="src: url(./models/busterDrone.gltf);"
       animation-mixer>
-      </a-entity>
+      </a-entity> -->
+      <a-assets>
+        <a-asset-item id="drone" src="./model/busterDrone.gltf"></a-asset-item>
+      </a-assets>
+      <a-entity gltf-model="#drone"></a-entity>
     </a-marker>
     <!--
         JSON Model - bot4.json
