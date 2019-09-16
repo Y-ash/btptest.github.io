@@ -1,48 +1,3 @@
-<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/examples/vendor/aframe/build/aframe.min.js"></script>
-<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"></script>
-<script>
-  AFRAME.registerComponent('arjs-portal-door', {
-	schema: {
-		url : {		// Url of the content - may be video or image
-			type: 'string',
-		},
-		doorWidth : {	// width of the door
-			type: 'number',
-			default: 1,
-		},
-		doorHeight : {	// height of the door
-			type: 'number',
-			default: 2,
-		},
-	},
-	init: function () {
-		var _this = this
-
-		var doorWidth = this.data.doorWidth
-		var doorHeight = this.data.doorHeight
-		var imageURL = this.data.url
-
-		var portalDoor = new THREEx.Portal360(imageURL, doorWidth, doorHeight)
-		this._portalDoor = portalDoor
-
-		this.el.object3D.add(portalDoor.object3d)
-	},
-	tick: function(){
-		this._portalDoor.update()
-	}
-})
-
-
-AFRAME.registerPrimitive('a-portal-door', AFRAME.utils.extendDeep({}, AFRAME.primitives.getMeshMixin(), {
-	defaultComponents: {
-		'arjs-portal-door': {},
-	},
-	mappings: {
-		'url': 'arjs-portal-door.url',
-	}
-}))
-</script>
-<script>
 var THREEx = THREEx || {}
 
 THREEx.Portal360 = function(videoImageURL, doorWidth, doorHeight){
@@ -298,28 +253,3 @@ THREEx.Portal360.prototype.update = function () {
 		this.insideMesh.visible = true
 	}
 }
-</script>
-<body style='margin : 0px; overflow: hidden;'>
-  <a-scene embedded arjs='trackingMethod: best;'>
-  <a-assets>
-    <video src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.1/aframe/examples/demo-portal-door/videos/aframe-city-360.mp4"></video>
-  </a-assets>
-		<!-- Create a anchor to attach your augmented reality -->
-		<a-anchor hit-testing-enabled='true'>
-
-			<!-- portal 360 with an image -->
-			<!-- <a-portal-door url='images/360_topaz.png' position='0 0 0' scale='1 1 1' rotation='0 90 0'><a-portal-door> -->
-
-			<!-- portal 360 with an video -->
-			<!-- <a-portal-door url='videos/pano.webm' position='0 0 0' scale='2 2 2' rotation='0 90 0'><a-portal-door> -->
-			<a-portal-door url='https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg' position='0 0 0' scale='0.7 1 0.7' rotation='0 90 0'><a-portal-door>
-			<!-- <a-portal-door url='https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.1/aframe/examples/demo-portal-door/videos/aframe-city-360.mp4' position='0 0 0' scale='2 2 2' rotation='0 90 0'><a-portal-door> -->
-
-		</a-anchor>
-
-		<!-- Define a static camera -->
-		<a-camera-static/>
-
-	</a-scene>
-	
-</body>
