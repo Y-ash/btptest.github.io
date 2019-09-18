@@ -51,9 +51,7 @@ THREEx.Portal360 = function(videoImageURL, doorWidth, doorHeight){
 	doorCenter.position.y = doorHeight/2
 	this.object3d = doorCenter
 
-	//////////////////////////////////////////////////////////////////////////////
 	//		build texture360
-	//////////////////////////////////////////////////////////////////////////////
 	var isVideo = videoImageURL.match(/.(mp4|webm|ogv)/i) ? true : false
 	if( isVideo ){
 		var video = document.createElement( 'video' )
@@ -77,9 +75,7 @@ THREEx.Portal360 = function(videoImageURL, doorWidth, doorHeight){
 		texture360.flipY = false;		
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
 	//		build mesh
-	//////////////////////////////////////////////////////////////////////////////
 
 	// create insideMesh which is visible IIF inside the portal
 	var insideMesh = this._buildInsideMesh(texture360, doorWidth, doorHeight)
@@ -95,9 +91,8 @@ THREEx.Portal360 = function(videoImageURL, doorWidth, doorHeight){
 	var frameMesh = this._buildRectangularFrame(doorWidth/100, doorWidth, doorHeight)
 	doorCenter.add(frameMesh)
 }
-//////////////////////////////////////////////////////////////////////////////
+
 //		Code Separator
-//////////////////////////////////////////////////////////////////////////////
 THREEx.Portal360.buildTransparentMaterial = function(){
 	// if there is a cached version, return it
 	if( THREEx.Portal360.buildTransparentMaterial.material ){
@@ -118,9 +113,7 @@ THREEx.Portal360.buildTransparentMaterial = function(){
 	return material		
 }
 
-//////////////////////////////////////////////////////////////////////////////
 //		Build various cache
-//////////////////////////////////////////////////////////////////////////////
 THREEx.Portal360.buildSquareCache = function(){
 	var container = new THREE.Group
 	// add outter cube - invisibility cloak
@@ -308,11 +301,11 @@ THREEx.Portal360.prototype.update = function () {
 		<a-anchor hit-testing-enabled='true'>
 
 			<!-- portal 360 with an image -->
-			<!-- <a-portal-door url='images/360_topaz.png' position='0 0 0' scale='1 1 1' rotation='0 90 0'><a-portal-door> -->
+			<a-portal-door url='images/360-redull.png' position='0 0 0' scale='1 1 1' rotation='0 90 0'><a-portal-door>
 
 			<!-- portal 360 with an video -->
 			<!-- <a-portal-door url='videos/pano.webm' position='0 0 0' scale='2 2 2' rotation='0 90 0'><a-portal-door> -->
-			<a-portal-door url='https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg' position='0 0 0' scale='0.7 1 0.7' rotation='0 90 0'><a-portal-door>
+			<!-- <a-portal-door url='https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg' position='0 0 0' scale='0.7 1 0.7' rotation='0 90 0'><a-portal-door> -->
 			<!-- <a-portal-door url='https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.1/aframe/examples/demo-portal-door/videos/aframe-city-360.mp4' position='0 0 0' scale='2 2 2' rotation='0 90 0'><a-portal-door> -->
 
 		</a-anchor>
